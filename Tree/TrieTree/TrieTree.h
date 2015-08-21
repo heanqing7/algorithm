@@ -1,5 +1,6 @@
 #ifndef __TRIETREE_H__
 #define __TRIETREE_H__
+#define LOWER(c) ((char)(c|0x20))
 #include <queue>
 #include <iostream>
 #include <string>
@@ -141,10 +142,10 @@ void TrieTree::add(const std::string &s)
 	TreeNode *tmp = root;
 	for(int i=0;i<s.size();i++)
 	{
-		int index = s[i] - 'a';
+		int index = LOWER(s[i]) - 'a';
 		if(tmp->child[index]==NULL)
 		{
-			TreeNode *newNode = new TreeNode(s[i]);
+			TreeNode *newNode = new TreeNode(LOWER(s[i]));
 			tmp->child[index] = newNode;		
 			tmp->isLevel = false;
 			newNode->parent = tmp;
@@ -162,7 +163,12 @@ void TrieTree::travel(const TreeNode *root)
 {
 	if(root!=NULL)
 	{
-		std::cout<<root->c<<std::endl;
+
+		std::cout<<root->c;
+		if(root->isLevel)
+		{
+			std::cout<<std::endl;
+		}
 		for(int i=0;i<BRANCH;i++)
 		{
 			travel(root->child[i]);	
@@ -176,12 +182,12 @@ int TrieTree::find(const std::string& str)
 	TreeNode *tmp = root;
 	for(int i=0;i<str.size();i++)
 	{
-		int index = str[i] - 'a';
+		int index = LOWER(str[i]) - 'a';
 		if(tmp->child[index]==NULL)
 		{
 			return 0;
 		}
-		else if(str[i]==tmp->child[index]->c)
+		else if(LOWER(str[i])==tmp->child[index]->c)
 		{
 			tmp = tmp->child[index];
 		}

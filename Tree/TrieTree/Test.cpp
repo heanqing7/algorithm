@@ -4,9 +4,9 @@ using namespace std;
 int main()
 {	
 	TrieTree tree;
-	tree.add("helloworld");	
-	tree.add("helloworld");	
-	tree.add("helloworld");	
+	tree.add("Helloworld");	
+	tree.add("Helloworld");	
+	tree.add("Helloworld");	
 	tree.add("helloshanpao");	
 	tree.add("helloshanpao");	
 	tree.add("hellosb");	
@@ -14,9 +14,10 @@ int main()
 	tree.add("abcd");	
 	tree.add("abcd");	
 	tree.add("a");	
-	//tree.travel(tree.getRoot());
+	tree.travel(tree.getRoot());
+	cout<<endl;
 	cout<<"hellosb"<<tree.find("hellosb")<<endl;
-	cout<<"helloworld"<<tree.find("helloworld")<<endl;
+	cout<<"Helloworld"<<tree.find("Helloworld")<<endl;
 	cout<<"helloshanpao"<<tree.find("helloshanpao")<<endl;
 	cout<<"helloduzi"<<tree.find("helloduzi")<<endl;
 	cout<<"abc"<<tree.find("abc")<<endl;
